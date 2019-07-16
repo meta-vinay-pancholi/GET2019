@@ -1,14 +1,13 @@
 package area;
-
-
 public class Area {
+    
     /**
      * @param height
      * @param width
      * function returning area of triangle 
      */
-    public double triangle(double height, double width){
-    	double area=(0.5)*height*width;
+    public double triangle (double height, double width) {
+    	double area = (0.5) * height * width ;
     	return area;
     }
     
@@ -17,8 +16,8 @@ public class Area {
      * @param width
      * function returning area of rectangle
      */
-    public double rectangle(double height, double width){
-    	double area=height*width;
+    public double rectangle (double height, double width) {
+    	double area = height * width ;
     	return area;
     }
     
@@ -26,8 +25,8 @@ public class Area {
      * @param side
      * function returning side of square
      */
-    public  double square(double side){
-    	double area=side*side;
+    public  double square ( double side ) {
+    	double area = side * side;
     	return area;
     }
     
@@ -35,10 +34,9 @@ public class Area {
      * @param radius
      * function returning area of circle
      */
-    public  double circle( double radius ){
+    public  double circle( double radius ) {
     	double pi = 3.14;
     	double area = pi * radius * radius;
-    	
-    	return area;
+        return area;
     }
 }
