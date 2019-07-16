@@ -17,10 +17,10 @@ public class Main {
 			System.out.println("Enter grade of "+ (i+1) +" student");
 			grades[i] = new Scanner(System.in).nextFloat();
 		}
-		float average = marksheet.average(grades);
-		float maxGrade = marksheet.maxGrade(grades);
-		float minGrade = marksheet.minGrade(grades);
-	        float perStudentPass = marksheet.percentageStudentPass(grades);
+		float average = markSheet.average(grades);
+		float maxGrade = markSheet.maxGrade(grades);
+		float minGrade = markSheet.minGrade(grades);
+	        float perStudentPass = markSheet.percentageStudentPass(grades);
 		
 		System.out.println("Average of grades=" +average);
 		System.out.println("Maximum grade is=" +maxGrade);
