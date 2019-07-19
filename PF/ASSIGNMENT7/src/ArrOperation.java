@@ -6,17 +6,17 @@ public class ArrOperation {
 	 */
 	public int maxMirror(int[] numArray) {
 		int len = numArray.length;
-		int maxMirrorCount = 1;
+		int maxMirrorCount = 0;
 		boolean flag = false;
 
 		try {
 			if (numArray.length == 0) {
-				throw new AssertionError("Assertion Error occured");//If array length is zero it will throw assertion Error
+				throw new AssertionError("Assertion Error occured");// If array length  zero it will throw assertion error
 			}
 		} catch (AssertionError e) {
 			System.out.println(e.getMessage());
 		}
-		
+
 		for (int i = 0; i < len; i++) {
 			int tempCount = 1;
 			int count = i;
@@ -25,21 +25,17 @@ public class ArrOperation {
 					flag = true;
 					count++;
 					continue;
-				}
-				if (numArray[count] == numArray[j] && flag) {
+				} else if (numArray[count] == numArray[j] && flag) {
 					tempCount++;
 					count++;
-					maxMirrorCount = (tempCount > maxMirrorCount) ? tempCount
-							: maxMirrorCount;
+					maxMirrorCount = (tempCount > maxMirrorCount) ? tempCount : maxMirrorCount;
 					continue;
-				}
-				if (numArray[i] != numArray[j] && flag) {
+				} else if (numArray[i] != numArray[j] && flag) {
 					flag = false;
 					count = i;
 					tempCount = 1;
 					continue;
-				}
-				if (j == count || (j - count) == 1) {
+				} else if (j == count || (j - count) == 1) {
 					flag = false;
 					break;
 				}
@@ -83,64 +79,58 @@ public class ArrOperation {
 	 * @return numArray
 	 * function returning an array that contains exactly the same numbers as the input array, but rearranged so that every X is immediately followed by a Y without moving X within array, but every other number may move
 	 */
-	public int[] fixXY(int numArray[], int x, int y) {
-		int j = 0;
-		int countX = 0, countY = 0;
-		try {
-			if (numArray.length == 0) {
-				throw new AssertionError("Assertion Error occured");//Assertion error if array length will zero
+	public int[] fixXY(int array[] , int x , int y) {
+		if (array.length == 0)
+			throw new AssertionError("Array is Empty.");
+		// Check if occurence of x & y are equal, throws Assertion error otherwise.
+		int countx = 0, county = 0;
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] == x) {
+				if (i < array.length - 1 && array[i + 1] == x)
+					throw new AssertionError("Two adjacents X values are there.");
+				countx++;
 			}
-		} catch (AssertionError e) {
-			System.out.println(e.getMessage());
+			if (array[i] == y)
+				county++;
 		}
-		
-		for (int l = 0; l < numArray.length; l++) {
-			if (numArray[l] == x) {
-				countX = countX + 1;
-			} else if (numArray[l] == y) {
+		if (countx != county)
+			throw new AssertionError("There are unequal numbers of X and Y " + "in input array.");
 
-				countY = countY + 1;
+		int y1 = -1;
+		for (int i = 0; i < array.length; i++) {
+			// If x is the last element in array, throws Assertion error.
+			if (i == array.length - 1 && array[i] == x)
+				throw new AssertionError("X occurs at the last index of array.");
+			if (i < array.length - 1 && array[i] == x && array[i + 1] == y) {
+				i = i + 1;
+				continue;
 			}
-		}
-
-		try {
-			if (countX != countY) {
-				throw new AssertionError("Assertion Error occured");//Assertion error if number of x and y are unequal
-			}
-		} catch (AssertionError e) {
-			System.out.println(e.getMessage());
-		}
-
-		for (int l = 1; l < numArray.length; l++) {
-			try {
-				if (numArray[l - 1] == x && numArray[l] == y) {
-
-					throw new AssertionError("Assertion Error occured");
+			if (array[i] == x) {
+				if (y1 != -1) {
+					ArrOperation.swap(i + 1, y1, array);
+					y1 = -1;
+					i++;
+				} else {
+					int temp = i + 2;
+					while (temp < array.length && array[temp] != y)
+						temp++;
+					if (temp < array.length && array[temp] == y) {
+						ArrOperation.swap(i + 1, temp, array);
+						i++;
+					}
 				}
-
-			} catch (AssertionError e) {
-				System.out.println(e.getMessage());
+				continue;
 			}
+			if (array[i] == y && y1 == -1)
+				y1 = i;
 		}
-
-		try {
-			if (numArray[numArray.length - 1] == x) {
-				throw new AssertionError("Assertion Error occured");//Assertion error if last element is X
-			}
-
-		} catch (AssertionError e) {
-			System.out.println(e.getMessage());
-		}
-		for (int i = 0; i < numArray.length - 1; i++) {
-			if (numArray[i] == x && numArray[i + 1] != y) {
-				for (; !(numArray[j] == y && (j == 0 || j > 0
-						&& numArray[j - 1] != x)); j++)
-					;
-				numArray[j] = numArray[i + 1];
-				numArray[i + 1] = y;
-			}
-		}
-		return numArray;
+		return array;
+	}
+	
+	public static void swap(int x, int y, int array[]) {
+		array[x] = array[x] + array[y];
+		array[y] = array[x] - array[y];
+		array[x] = array[x] - array[y];
 	}
 
 	/**
@@ -159,8 +149,9 @@ public class ArrOperation {
 		for (int i = 0; i < numArray.length; i++) {
 			leftSum += numArray[i];
 			int rightSum = 0;
-			for (int j = i + 1; j < numArray.length; j++)
+			for (int j = i + 1; j < numArray.length; j++) 
 				rightSum += numArray[j];
+	
 			if (leftSum == rightSum)
 				return i + 1;
 		}
