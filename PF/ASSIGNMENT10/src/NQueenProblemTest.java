@@ -10,9 +10,7 @@ import org.junit.runners.Parameterized;
 public class NQueenProblemTest {
 
 	private int[][] inputArray;
-	private boolean expectedResult;
-	private int row;
-	private int numberOfQueen;
+	private int[][] expectedResult;
 	private NQueenProblem Nqueens;
 
 	@Before
@@ -20,27 +18,22 @@ public class NQueenProblemTest {
 		Nqueens = new NQueenProblem();
 	}
 
-	public NQueenProblemTest(boolean expectedResult, int[][] inputArray, int row) {
+	public NQueenProblemTest(int[][] expectedResult, int[][] inputArray) {
 		this.expectedResult = expectedResult;
 		this.inputArray = inputArray;
-		this.row = row;
-		this.numberOfQueen = numberOfQueen;
 	}
 
 	@Parameterized.Parameters
 	public static Collection<Object[]> data() {
-		return Arrays.asList(new Object[][] {
-				{ true, new int[][] { { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 } }, 0 },
-				{ true, new int[][] { { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-						{ 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-						{ 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-						{ 0, 0, 0, 0, 0, 0, 0, 0, 0 } }, 0}
-
-		});
+		return Arrays.asList(new Object[][] { {
+				new int[][] { { 0, 1, 0, 0 }, { 0, 0, 0, 1 }, { 1, 0, 0, 0 },
+						{ 0, 0, 1, 0 } },
+				new int[][] { { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 },
+						{ 0, 0, 0, 0 } } } });
 	}
 
 	@Test
 	public void nQueen() {
-		assertEquals(true, Nqueens.solveNQueen(inputArray, row));
+		assertArrayEquals(expectedResult, Nqueens.printValue(inputArray));//print value function is calling first
 	}
 }
