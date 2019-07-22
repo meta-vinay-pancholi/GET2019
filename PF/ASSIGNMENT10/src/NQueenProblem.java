@@ -36,7 +36,6 @@ public class NQueenProblem {
 			x--;
 			y++;
 		}
-
 		return true;
 	}
 
@@ -47,12 +46,6 @@ public class NQueenProblem {
 	 */
 	public boolean solveNQueen(int board[][], int row) {
 		if (row == board.length) {
-			for (int i = 0; i < board.length; i++) {
-				for (int j = 0; j < board.length; j++) {
-					System.out.print(board[i][j] + "   ");
-				}
-				System.out.println("\n");
-			}
 			return true;
 		}
 
@@ -71,4 +64,20 @@ public class NQueenProblem {
 		}
 		return false;
 	}
+	
+	/**
+	 * @param board
+	 * Different function for printing values of board 
+	 */
+	public int[][] printValue(int[][] board ) {
+		if (solveNQueen(board,0)) {
+			for (int i = 0; i < board.length; i++) {
+				for (int j = 0; j < board.length; j++) {
+					System.out.print(board[i][j] + "   ");
+				}
+				System.out.println("\n");
+			}
+		 }
+		 return board;
+	 }
 }
