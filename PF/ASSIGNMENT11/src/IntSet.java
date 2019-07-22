@@ -10,7 +10,7 @@
  * @date 22/7/2019
  */
 public final class IntSet {
-	private int set[];
+	private final int set[];
 
 	/**
 	 * Constructor to initialize the set array
