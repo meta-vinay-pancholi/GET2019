@@ -28,18 +28,20 @@ WHERE
 /*
     Display top 20 Products which are ordered most in last 60 days along with numbers.
 */
-select * from orders;
-select 
-    product.name, count(o.product_id) as freq
-from
-    orders as o
-        inner join
-    product ON product.product_id = o.product_id
-where
-    o.order_date >= DATE_SUB('2008-12-12', INTERVAL 60 DAY)
-group by product.product_title
-order by freq desc
-limit 10;
+SELECT 
+    p.Name, SUM(oi.quantity) AS No_Of_Units_Ordered 
+FROM
+    product p
+        LEFT JOIN
+    orderitem oi ON p.id = oi.product_id
+        LEFT JOIN
+    orders o ON oi.order_id = o.order_id
+WHERE
+    DATEDIFF(now(),
+        o.order_date) < 60
+GROUP BY p.id
+ORDER BY Revenue DESC
+LIMIT 20;
 
 /*
 Given a category search keyword, display all the Products present in this category/categories
@@ -62,6 +64,35 @@ WHERE
        ORDERITEM I
            LEFT JOIN
        ORDERS O ON O.ORDER_ID = I.ORDER_ID AND DATEDIFF(now(), O.order_Date) < 90);
+
+/*
+Display top 10 Items which were cancelled most.
+*/
+SELECT 
+    p.id, p.Name, count(p.id) AS No_Of_Cancellations
+FROM
+    product p
+        LEFT JOIN
+    orderitem i ON p.id = i.product_id
+WHERE
+    status = 'C'
+GROUP BY p.id
+ORDER BY No_Of_Cancellations DESC;
+/*
+Display Monthly sales revenue of the StoreFront for last 6 months. It should display each month’s sale.
+*/
+SELECT 
+    SUM(oi.quantity) AS No_Of_Units_Ordered,
+    SUM(oi.total) AS MAX_REVENUE,
+    MONTH(o.order_date) AS Month
+FROM
+    product p,
+    orderitem oi,
+    orders o
+WHERE
+    DATEDIFF(now(),
+        o.order_date) < 180 AND oi.order_id = o.order_id And p.id = oi.product_id
+GROUP BY MONTH(o.order_date) ;
 
 
 
