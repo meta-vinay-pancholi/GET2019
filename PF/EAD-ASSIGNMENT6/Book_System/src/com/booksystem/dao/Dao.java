@@ -7,7 +7,6 @@ import java.util.List;
 import com.booksystem.model.Book;
 
 public class Dao {
-
 	public int addBook(String title, String publisher, String writer, int year)
 			throws SQLException {
 		String query = "INSERT INTO Book (TITLE,WRITER,PUBLISHER,PUBLISHED_YEAR) Values('"
