@@ -17,7 +17,6 @@ public class SqlConnector {
 			System.out.println(e);
 			return null;
 		}
-
 	}
 
 	/**
