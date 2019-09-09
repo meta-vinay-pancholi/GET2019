@@ -8,7 +8,6 @@ public class Price {
 	private int yearly;
 
 	/**
-	 * 
 	 * @param id
 	 * @param type
 	 * @param daily
@@ -94,5 +93,4 @@ public class Price {
 	public void setYearly(int yearly) {
 		this.yearly = yearly;
 	}
-
 }

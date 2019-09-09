@@ -17,14 +17,14 @@ import com.metaparking.service.ServiceLayer;
 @WebServlet("/UpdateProfile")
 public class UpdateProfile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private ServiceLayer ServiceLayerObj;
+	private ServiceLayer serviceLayerObj;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public UpdateProfile() {
 		super();
-		this.ServiceLayerObj = new ServiceLayer();
+		this.serviceLayerObj = new ServiceLayer();
 	}
 
 	/**
@@ -50,9 +50,8 @@ public class UpdateProfile extends HttpServlet {
 		String name = request.getParameter("name");
 		String contact = request.getParameter("number");
 		String password = request.getParameter("pwd");
-		System.out.println("ssss");
 		try {
-			int result  = ServiceLayerObj.UpdateUserData(name,
+			int result  = serviceLayerObj.updateUserData(name,
 					password, contact , userID);
 			if(result == 1) {
 				response.sendRedirect("profile.jsp");

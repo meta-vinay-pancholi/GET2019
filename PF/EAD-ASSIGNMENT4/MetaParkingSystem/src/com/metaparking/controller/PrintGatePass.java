@@ -19,35 +19,39 @@ import com.metaparking.service.ServiceLayer;
 @WebServlet("/PrintGatePass")
 public class PrintGatePass extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private ServiceLayer ServiceLayerObj; 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public PrintGatePass() {
-        super();
-        this.ServiceLayerObj = new ServiceLayer();
-    }
+	private ServiceLayer serviceLayerObj;
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public PrintGatePass() {
+		super();
+		this.serviceLayerObj = new ServiceLayer();
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		String price = request.getParameter("price");
-			PrintWriter out = response.getWriter();
-		 HttpSession session = request.getSession(false);
-		 String vid =   String.valueOf(session.getAttribute("vId"));
-		 String userId =   String.valueOf(session.getAttribute("user"));
-		  try {
-			int result =ServiceLayerObj.createAGatePAss(Integer.parseInt(price) , Integer.parseInt(vid) , Integer.parseInt(userId));
-			if(result == 1) {
-				out.print("<h1>Total Amount of gate pass is ->"+price+"USD</h1>");
+		PrintWriter out = response.getWriter();
+		HttpSession session = request.getSession(false);
+		String vid = String.valueOf(session.getAttribute("vId"));
+		String userId = String.valueOf(session.getAttribute("user"));
+		try {
+			int result = serviceLayerObj.createAGatePAss(
+					Integer.parseInt(price), Integer.parseInt(vid),
+					Integer.parseInt(userId));
+			if (result == 1) {
+				out.print("<h1>Total Amount of gate pass is ->" + price
+						+ "USD</h1>");
 				out.print("<a href='logout'>Logout</a>");
 			}
 		} catch (NumberFormatException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
-
 }

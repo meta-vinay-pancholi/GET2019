@@ -17,7 +17,7 @@ import com.metaparking.service.ServiceLayer;
  */
 @WebServlet("/VehicleRegistration")
 public class VehicleRegistration extends HttpServlet {
-	ServiceLayer ServiceLayerObj =  new ServiceLayer();
+	ServiceLayer serviceLayerObj =  new ServiceLayer();
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -47,7 +47,7 @@ public class VehicleRegistration extends HttpServlet {
 		String identy = request.getParameter("identy");
 		
 		try {
-			error_vehicle = ServiceLayerObj.validateVehicleData(vname, vtype, vnumber, empid,identy);
+			error_vehicle = serviceLayerObj.validateVehicleData(vname, vtype, vnumber, empid,identy);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -60,9 +60,6 @@ public class VehicleRegistration extends HttpServlet {
 			else {
 			request.setAttribute("Error", error_vehicle);
 			 request.getRequestDispatcher("vehicleRegister.jsp").forward(request, response);
-
-			}
-
+		}
 	}
-
 }

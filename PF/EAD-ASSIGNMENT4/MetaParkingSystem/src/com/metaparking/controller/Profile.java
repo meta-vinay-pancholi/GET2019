@@ -20,14 +20,14 @@ import com.metaparking.service.ServiceLayer;
 @WebServlet("/Profile")
 public class Profile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private ServiceLayer ServiceLayerObj;
+	private ServiceLayer serviceLayerObj;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public Profile() {
 		super();
-		this.ServiceLayerObj = new ServiceLayer();
+		this.serviceLayerObj = new ServiceLayer();
 	}
 
 	/**
@@ -42,7 +42,7 @@ public class Profile extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		String userID = String.valueOf(session.getAttribute("user"));
 		try {
-			userData = ServiceLayerObj.getUserData(userID);
+			userData = serviceLayerObj.getUserData(userID);
 			if (userData != null) {
 				request.setAttribute("userData", userData);
 				request.getRequestDispatcher("profile.jsp").forward(request,
@@ -56,7 +56,6 @@ public class Profile extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	/**
@@ -65,7 +64,5 @@ public class Profile extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-
 	}
-
 }

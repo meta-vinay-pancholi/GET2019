@@ -1,6 +1,8 @@
 package com.metaparking.model;
 public class VehicleDetails {
 	private int id;
+	private String vnumber;
+	private String type;	
 
 	public VehicleDetails(int id, String vnumber, String type) {
 		super();
@@ -33,6 +35,5 @@ public class VehicleDetails {
 		this.type = type;
 	}
 
-	private String vnumber;
-	private String type;
+
 }

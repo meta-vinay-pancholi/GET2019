@@ -3,7 +3,7 @@ package com.metaparking.dao;
 import java.sql.*;
 
 /**
- * this class is used to connect all database and also exexute the query
+ * this class is used to connect all database and also execute the query
  * 
  * @database
  * @author vinay
@@ -78,5 +78,4 @@ public class SqlConnector {
 		}
 		return 0;
 	}
-
 }

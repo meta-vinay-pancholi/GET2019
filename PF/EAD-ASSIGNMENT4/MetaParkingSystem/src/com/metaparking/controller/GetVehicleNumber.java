@@ -3,7 +3,6 @@ package com.metaparking.controller;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,14 +18,14 @@ import com.metaparking.service.ServiceLayer;
 @WebServlet("/GetVehicleNumber")
 public class GetVehicleNumber extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private ServiceLayer ServiceLayerObj;
+	private ServiceLayer serviceLayerObj;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
     public GetVehicleNumber() {
         super();
-        this.ServiceLayerObj = new ServiceLayer();
+        this.serviceLayerObj = new ServiceLayer();
     }
 
 	/**
@@ -42,7 +41,7 @@ public class GetVehicleNumber extends HttpServlet {
 		String empId = request.getParameter("empId");
 		ArrayList<VehicleDetails> vehicleDetails = new ArrayList<VehicleDetails>();
 		try {
-			vehicleDetails = ServiceLayerObj.getVeichleDetails(empId);
+			vehicleDetails = serviceLayerObj.getVehicleDetails(empId);
 			if(vehicleDetails.size() >0) {
 				 request.setAttribute("vehicleDetails", vehicleDetails);
 				 request.getRequestDispatcher("gatePass.jsp").forward(request, response);

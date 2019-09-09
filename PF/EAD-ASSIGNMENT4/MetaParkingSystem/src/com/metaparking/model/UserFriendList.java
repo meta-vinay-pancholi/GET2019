@@ -45,5 +45,4 @@ public class UserFriendList {
 		Contact_number = contact_number;
 		Email_id = email_id;
 	}
-
 }

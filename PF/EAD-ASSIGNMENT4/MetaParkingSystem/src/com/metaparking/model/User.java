@@ -39,5 +39,4 @@ public class User {
 		public void setContat(String contat) {
 			this.contat = contat;
 		}
-
 }

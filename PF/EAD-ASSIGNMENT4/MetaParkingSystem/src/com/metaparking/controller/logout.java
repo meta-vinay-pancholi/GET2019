@@ -37,7 +37,4 @@ public class logout extends HttpServlet {
 		session.removeAttribute("user");
 		session.removeAttribute("vId");
 	}
-
-
-
 }

@@ -18,14 +18,14 @@ import com.metaparking.service.ServiceLayer;
 @WebServlet("/UserRegistration")
 public class UserRegistration extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private ServiceLayer ServiceLayerObj;
+	private ServiceLayer serviceLayerObj;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public UserRegistration() {
 		super();
-		this.ServiceLayerObj= new ServiceLayer();
+		this.serviceLayerObj= new ServiceLayer();
 		// TODO Auto-generated constructor stub
 	}
 
@@ -61,7 +61,7 @@ public class UserRegistration extends HttpServlet {
 		String conpass = request.getParameter("Conpassword");
 
 		try {
-			errors = ServiceLayerObj.validateUserData(name, gender, phone, email,
+			errors = serviceLayerObj.validateUserData(name, gender, phone, email,
 					org, pass, conpass);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -75,9 +75,6 @@ public class UserRegistration extends HttpServlet {
 			else {
 			request.setAttribute("Error", errors);
 			 request.getRequestDispatcher("index.jsp").forward(request, response);
-
 			}
-
 	}
-
 }

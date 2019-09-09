@@ -57,7 +57,7 @@ public class DaoLayer {
 		return rs;
 	}
 	
-	public ResultSet  gateUserData(String userID) throws SQLException {
+	public ResultSet  getUserData(String userID) throws SQLException {
 		final String query = "SELECT * FROM User WHERE id = '"+Integer.parseInt(userID)+"'";
 		System.out.println(query);
 		ResultSet rs =SqlConnector.executeQuery(query);
