@@ -17,15 +17,13 @@ import com.google.gson.Gson;
 
 @Path("/book")
 public class BookManagement {
-
+        Service serviceObject = new Service();
 	@POST
 	@Path("/insertBook")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String addBook(Book book) {
-		Service serviceObj = new Service();
-
 		try {
-			if (serviceObj.addBook(book.getTitle(), book.getPublisher(),
+			if (serviceObject.addBook(book.getTitle(), book.getPublisher(),
 					book.getWriter(), book.getYear()) > 0) {
 				return "Data Inserted";
 			}
@@ -39,10 +37,9 @@ public class BookManagement {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getBookRecords() {
-		Service serviceObj = new Service();
 		List<Book> book;
 		try {
-			book = serviceObj.getBookRecords();
+			book = serviceObject.getBookRecords();
 			if (book.size() > 0) {
 				Gson gson = new Gson();
 				String bookJson = gson.toJson(book);
@@ -59,7 +56,7 @@ public class BookManagement {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("{title}")
 	public String getBookByTitle(@PathParam("title") String title) {
-		Service serviceObj = new Service();
+		Service serviceObject = new Service();
 		List<Book> book;
 		try {
 			book = serviceObj.getBookByTitle(title);
@@ -80,7 +77,7 @@ public class BookManagement {
 	@Path("{title}")
 	public String updateBook(Book book, @PathParam("title") String title)
 			throws SQLException {
-		Service serviceObj = new Service();
+		Service serviceObject = new Service();
 		if (serviceObj.updateBook(title, book.getYear()) >= 1) {
 			return "Data Updated";
 		} else {
@@ -93,7 +90,7 @@ public class BookManagement {
 	@Path("{ID}")
 	public String deleteAnItemFromBooks(@PathParam("ID") String ID)
 			throws SQLException {
-		Service serviceObj = new Service();
+		Service serviceObject = new Service();
 		if (serviceObj.deleteAnItemFromBooks(ID) >= 1) {
 			return "Data Deleted";
 		} else {
@@ -104,8 +101,8 @@ public class BookManagement {
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
 	public String deleteAllRecord() throws SQLException {
-		Service serviceObj = new Service();
-		if (serviceObj.deleteAllRecord() >= 1) {
+		Service serviceObject = new Service();
+		if (serviceObject.deleteAllRecord() >= 1) {
 			return "All data deleted";
 		} else {
 			return "There was an error while deleting the data";
