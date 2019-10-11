@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <script src="https://kit.fontawesome.com/145375d6eb.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="session7.css">
+    <script src="session7.js"></script>
+    <title>Metaparking System</title>
+</head>
+
+<body>
+    <header>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <h1>
+                        Meta Parking
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container myBox animated  ">
+        <div class="row justify-content-md-center form_heading">
+            <h1 style="margin-top: -100px;">Welcome to Meta-Parking</h1>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+                <p id="label"> Employee Registration form</p>
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+                <p id="congrats"> </p>
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+                <p id="demo">Hello, User may I know your good name?</p>
+            </div>
+        </div>
+        <div class="row  justify-content-md-center " id="form_div">
+            <div class=" col-md-auto">
+                <input class="form-control animated slideInRight inputField" onblur="nameSubmit()" onkeyup="validateName()" type="text" name="inputField" id="inputField">
+            </div>
+        </div>
+        <div class="row justify-content-md-center" id="vehicle_div">
+            <div class="col-md-auto">
+                <button onclick="vehicleType(this.id)" id="cycle" name="vtype"><i class="fas fa-bicycle fontAwesome"></i></button>
+            </div>
+            <div class="col-md-auto">
+                <button onclick="vehicleType(this.id)" id="bike" name="vtype"><i class="fas fa-motorcycle fontAwesome"></i></button>
+            </div>
+            <div class="col-md-auto">
+                <button onclick="vehicleType(this.id)" id="car" name="vtype"><i class="fas fa-car fontAwesome"></i></button>
+            </div>
+        </div>
+        <div class="row justify-content-md-center" id="currency_div">
+            <div class="col-md-auto">
+                <button onclick="currency(this.id)" id="dollar"><i class="fas fa-dollar-sign fontAwesome"></i></button>
+            </div>
+            <div class="col-md-auto">
+                <button onclick="currency(this.id)" id="yen"> <i class="fas fa-yen-sign fontAwesome"></i></button>
+            </div>
+            <div class="col-md-auto">
+                <button onclick="currency(this.id)" id="rupee">  <i class="fas fa-rupee-sign fontAwesome"></i></button>
+            </div>
+        </div>
+        <div>
+            <div id="cycle1" style=" margin-left: 452px;margin-top: 13px;">
+                <div class="p">
+                    <input type="radio" id="5" name="cycle" value="5" checked>
+                    <label class="p1">5</label>
+                </div>
+
+                <div class="p">
+                    <input type="radio" id="100" name="cycle" value="100">
+                    <label class="p1">100</label>
+                </div>
+
+                <div class="p">
+                    <input type="radio" id="500" name="cycle" value="500">
+                    <label class="p1">500</label>
+                </div>
+
+            </div>
+            <div id="bike1" style="    margin-left: 452px;
+            margin-top: -96px;">
+
+                <div class="p">
+                    <input type="radio" id="10" name="bike" value="10" checked>
+                    <label class="p1">10</label>
+                </div>
+
+                <div class="p">
+                    <input type="radio" id="200" name="bike" value="200">
+                    <label class="p1">200</label>
+                </div>
+
+                <div class="p">
+                    <input type="radio" id="1000" name="bike" value="1000">
+                    <label class="p1">1000</label>
+                </div>
+
+            </div>
+            <div id="car1" style="margin-left: 452px;margin-top: -96px;">
+
+                <div class="p">
+                    <input type="radio" id="20" name="car" value="20" checked>
+                    <label class="p1">20</label>
+                </div>
+
+                <div class="p">
+                    <input type="radio" id="500" name="car" value="500">
+                    <label class="p1">500</label>
+                </div>
+
+                <div class="p">
+                    <input type="radio" id="3500" name="car" value="3500">
+                    <label class="p1">3500</label>
+                </div>
+
+            </div>
+
+        </div>
+        <div id="bill" align="center">
+            <button type="submit" value="submit" onclick="bill_cal()">Get your pass</button>
+        </div>
+        <h2 id="show_price" align="center">
+        </h2>
+    </div>
+</body>
+
+</html>
