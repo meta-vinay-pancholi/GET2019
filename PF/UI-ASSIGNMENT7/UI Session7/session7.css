@@ -1,0 +1,74 @@
+  /* body {
+            background-image: linear-gradient(#8853D5, #10c6e7);
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        } */
+  
+  .fontAwesome {
+      font-size: 75px;
+      color: #563d7c;
+  }
+  
+  header {
+      min-height: 1.4rem;
+      background-color: #563d7c;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .05), inset 0 -1px 0 rgba(0, 0, 0, .1);
+      color: white;
+      padding: 5px;
+      margin-bottom: 52px;
+  }
+  
+  .heading {
+      margin-left: 0px;
+  }
+  
+  h1 {
+      font-family: Raleway;
+      font-size: 2vw;
+  }
+  
+  .myBox {
+      background-color: #e3e3e3;
+      width: auto;
+      height: auto;
+      padding: 120px;
+      border-radius: 26px;
+  }
+  
+  .inputField {
+      font-family: Raleway;
+      border: 1px solid lightblue;
+  }
+  
+  p {
+      font-size: 1.5vw;
+      font-family: Raleway;
+  }
+  
+  .form_heading {
+      background-color: #563d7c;
+  }
+  
+  #vehicle_div {
+      visibility: hidden;
+  }
+  
+  #cycle1 {
+      visibility: hidden;
+  }
+  
+  #car1 {
+      visibility: hidden;
+  }
+  
+  #bike1 {
+      visibility: hidden;
+  }
+  
+  #currency_div {
+      visibility: hidden;
+  }
+  
+  #bill {
+      visibility: hidden;
+  }
